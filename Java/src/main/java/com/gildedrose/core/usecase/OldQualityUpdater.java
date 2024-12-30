@@ -4,7 +4,7 @@ import com.gildedrose.Item;
 
 import static com.gildedrose.core.domain.SpecialNames.*;
 
-public class OldQualityUpdater implements QualityUpdater {
+public class OldQualityUpdater implements SelectableQualityUpdater {
     @Override
     public void updateQuality(Item item) {
         if (AGED_BRIE.equals(item.name) || BACKSTAGE_PASSES.equals(item.name)) {
@@ -48,5 +48,10 @@ public class OldQualityUpdater implements QualityUpdater {
                 }
             }
         }
+    }
+
+    @Override
+    public boolean matches(Item item) {
+        return AGED_BRIE.equals(item.name) || BACKSTAGE_PASSES.equals(item.name);
     }
 }

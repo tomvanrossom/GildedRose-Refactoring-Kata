@@ -1,18 +1,17 @@
 package com.gildedrose.core.usecase;
 
 import com.gildedrose.Item;
-import com.gildedrose.core.domain.SpecialNames;
+
+import java.util.List;
 
 public class QualityUpdaterSelector implements QualityUpdater {
 
-    private final QualityUpdater old;
     private final QualityUpdater standard;
-    private final QualityUpdater legendary;
+    private final List<SelectableQualityUpdater> selectables;
 
-    public QualityUpdaterSelector(OldQualityUpdater oldQualityUpdater, StandardQualityUpdater standardQualityUpdater, LegendaryQualityUpdater legendaryQualityUpdater) {
-        this.old = oldQualityUpdater;
+    public QualityUpdaterSelector(StandardQualityUpdater standardQualityUpdater,  List<SelectableQualityUpdater> selectables) {
         this.standard = standardQualityUpdater;
-        this.legendary = legendaryQualityUpdater;
+        this.selectables = selectables;
     }
 
     @Override
@@ -21,14 +20,11 @@ public class QualityUpdaterSelector implements QualityUpdater {
     }
 
     private QualityUpdater select(Item item){
-        if(SpecialNames.SULFURAS.equals(item.name)){
-            return this.legendary;
-        }
-        for(SpecialNames name: SpecialNames.values()){
-            if(name.equals(item.name)){
-                return old;
-            }
-        }
-        return standard;
+        return selectables
+            .stream()
+            .filter(selectable -> selectable.matches(item))
+            .findFirst()
+            .map(QualityUpdater.class::cast)
+            .orElse(standard);
     }
 }
