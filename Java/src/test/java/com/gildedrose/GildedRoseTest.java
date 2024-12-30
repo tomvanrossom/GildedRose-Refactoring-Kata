@@ -2,16 +2,145 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class GildedRoseTest {
 
     @Test
-    void foo() {
-        Item[] items = new Item[] { new Item("foo", 0, 0) };
+    void standardBehavior(){
+        //given
+        Item[] items = new Item[] { new Item("Standard", 10, 5) };
         GildedRose app = new GildedRose(items);
+
+        //when
         app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
+
+        //then
+        assertEquals(4, app.items[0].quality, "quality should decrease");
+        assertEquals(9, app.items[0].sellIn, "sellIn should decrease");
+    }
+
+    @Test
+    void qualityDecreaseDoublesAfterSellDate(){
+        //given
+        Item[] items = new Item[] { new Item("Standard", 0, 5) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(3, app.items[0].quality, "quality should decrease");
+        //TODO assertEquals(0, app.items[0].sellIn, "sellIn should not be negative");
+    }
+
+    @Test
+    void agedBrieQualityShouldIncrease(){
+        //given
+        Item[] items = new Item[] { new Item("Aged Brie", 10, 5) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(6, app.items[0].quality, "quality should be 6");
+    }
+
+    @Test
+    void agedBrieQualityShouldNotExceedMax(){
+        //given
+        Item[] items = new Item[] { new Item("Aged Brie", -1, 48) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(50, app.items[0].quality, "quality should be 6");
+    }
+
+    @Test
+    void qualityShouldNeverExceedMax(){
+        //given
+        Item[] items = new Item[] { new Item("Aged Brie", 10, 50) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(50, app.items[0].quality, "quality should not exceed max of 50");
+    }
+
+    @Test
+    void sulfurasIsLegendary(){
+        //given
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 10, 50) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(10, app.items[0].sellIn, "sellIn should not change");
+        assertEquals(50, app.items[0].quality, "quality should not change");
+    }
+
+    @Test
+    void backstagePassesQualityShouldIncrease(){
+        //given
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 20, 5) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(19, app.items[0].sellIn, "sellIn should decrease");
+        assertEquals(6, app.items[0].quality, "quality should increase");
+    }
+
+    @Test
+    void backstagePassesQualityShouldIncreaseBy2(){
+        //given
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 5) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(9, app.items[0].sellIn, "sellIn should decrease");
+        assertEquals(7, app.items[0].quality, "quality should increase by 2");
+    }
+
+    @Test
+    void backstagePassesQualityShouldIncreaseBy3(){
+        //given
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 5) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(4, app.items[0].sellIn, "sellIn should decrease");
+        assertEquals(8, app.items[0].quality, "quality should increase by 3");
+    }
+
+    @Test
+    void backstagePassesQualityShouldDropToZero(){
+        //given
+        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 5) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(-1, app.items[0].sellIn, "sellIn should decrease");
+        assertEquals(0, app.items[0].quality, "quality should be zero");
     }
 
 }
