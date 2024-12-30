@@ -85,7 +85,7 @@ class GildedRoseTest {
 
         //then
         assertEquals(10, app.items[0].sellIn, "sellIn should not change");
-        assertEquals(50, app.items[0].quality, "quality should not change");
+        assertEquals(80, app.items[0].quality, "quality should always be 80");
     }
 
     @Test
