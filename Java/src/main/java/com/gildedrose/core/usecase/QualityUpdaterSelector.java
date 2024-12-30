@@ -1,13 +1,16 @@
 package com.gildedrose.core.usecase;
 
 import com.gildedrose.Item;
+import com.gildedrose.core.domain.SpecialNames;
 
 public class QualityUpdaterSelector implements QualityUpdater {
 
     private final QualityUpdater old;
+    private final StandardQualityUpdater standard;
 
-    public QualityUpdaterSelector(OldQualityUpdater oldQualityUpdater) {
+    public QualityUpdaterSelector(OldQualityUpdater oldQualityUpdater, StandardQualityUpdater standardQualityUpdater) {
         this.old = oldQualityUpdater;
+        this.standard = standardQualityUpdater;
     }
 
     @Override
@@ -16,6 +19,11 @@ public class QualityUpdaterSelector implements QualityUpdater {
     }
 
     private QualityUpdater select(Item item){
-        return old;
+        for(SpecialNames name: SpecialNames.values()){
+            if(name.equals(item.name)){
+                return old;
+            }
+        }
+        return standard;
     }
 }
