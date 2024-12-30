@@ -1,6 +1,9 @@
 package com.gildedrose.core.usecase.aging;
 
 class BackstagePassAging implements AgingFunction {
+
+    private final int minQuality = 0;
+    private final int maxQuality = 50;
     public BackstagePassAging() {
     }
 
@@ -17,8 +20,12 @@ class BackstagePassAging implements AgingFunction {
         int newQuality = oldQuality + amount;
 
         if (newSellIn < 0) {
-            newQuality = 0;
+            newQuality = this.minQuality;
         }
-        return newQuality > 50 ? 50 : newQuality;
+        if (newQuality > this.maxQuality) {
+            newQuality = this.maxQuality;
+        }
+
+        return newQuality;
     }
 }
