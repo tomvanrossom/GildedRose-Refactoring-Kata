@@ -1,10 +1,10 @@
-package com.gildedrose.core.usecase;
+package com.gildedrose.core.usecase.qualityupdater;
 
 import com.gildedrose.Item;
 
 import java.util.List;
 
-public class QualityUpdaterSelector implements QualityUpdater {
+class QualityUpdaterSelector implements QualityUpdater {
 
     private final QualityUpdater standard;
     private final List<SelectableQualityUpdater> selectables;

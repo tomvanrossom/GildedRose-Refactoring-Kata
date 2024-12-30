@@ -1,6 +1,6 @@
 package com.gildedrose.core.usecase.aging;
 
-public class RateAging implements AgingFunction{
+class RateAging implements AgingFunction{
 
     private final int rate;
     private final int maxQuality;

@@ -8,4 +8,8 @@ public class AgingFunctions {
     public static AgingFunction improving(){
         return new RateAging(1, 50);
     }
+
+    public static AgingFunction backstagePasses(){
+        return new BackstagePassAging();
+    }
 }

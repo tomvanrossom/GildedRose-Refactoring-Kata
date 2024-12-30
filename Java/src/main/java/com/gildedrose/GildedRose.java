@@ -1,7 +1,7 @@
 package com.gildedrose;
 
-import com.gildedrose.core.usecase.QualityUpdater;
-import com.gildedrose.core.usecase.QualityUpdaterFactory;
+import com.gildedrose.core.usecase.qualityupdater.QualityUpdater;
+import com.gildedrose.core.usecase.qualityupdater.QualityUpdaterFactory;
 
 class GildedRose {
     Item[] items;

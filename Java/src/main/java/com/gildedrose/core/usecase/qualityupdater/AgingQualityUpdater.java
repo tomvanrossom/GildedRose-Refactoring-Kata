@@ -1,9 +1,10 @@
-package com.gildedrose.core.usecase;
+package com.gildedrose.core.usecase.qualityupdater;
 
 import com.gildedrose.Item;
 import com.gildedrose.core.usecase.aging.AgingFunction;
+import com.gildedrose.core.usecase.selectable.Selectable;
 
-public class AgingQualityUpdater implements SelectableQualityUpdater {
+class AgingQualityUpdater implements SelectableQualityUpdater {
 
     private final Selectable selectable;
     private final AgingFunction agingFunction;

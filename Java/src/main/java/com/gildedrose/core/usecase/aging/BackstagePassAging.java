@@ -1,6 +1,6 @@
 package com.gildedrose.core.usecase.aging;
 
-public class BackstagePassAging implements AgingFunction {
+class BackstagePassAging implements AgingFunction {
     public BackstagePassAging() {
     }
 

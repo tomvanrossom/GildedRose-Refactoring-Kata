@@ -1,9 +1,9 @@
-package com.gildedrose.core.usecase;
+package com.gildedrose.core.usecase.selectable;
 
 import com.gildedrose.Item;
 import com.gildedrose.core.domain.SpecialNames;
 
-public class SelectableByName implements Selectable{
+class SelectableByName implements Selectable {
     private final SpecialNames name;
 
     public SelectableByName(SpecialNames name) {

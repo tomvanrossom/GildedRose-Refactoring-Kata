@@ -1,4 +1,4 @@
-package com.gildedrose.core.usecase;
+package com.gildedrose.core.usecase.selectable;
 
 import com.gildedrose.Item;
 
