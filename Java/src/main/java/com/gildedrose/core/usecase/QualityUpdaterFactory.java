@@ -1,15 +1,16 @@
 package com.gildedrose.core.usecase;
 
+import com.gildedrose.core.domain.SpecialNames;
+import com.gildedrose.core.usecase.aging.AgingFunctions;
+
 import java.util.Arrays;
-import java.util.List;
 
 public class QualityUpdaterFactory {
 
-    private static QualityUpdater standard = new StandardQualityUpdater(1, 50);
+    private static QualityUpdater standard = new AgingQualityUpdater(new SelectsAll(), AgingFunctions.standard());
     private static SelectableQualityUpdater old = new OldQualityUpdater();
     private static SelectableQualityUpdater legendary = new LegendaryQualityUpdater();
-
     public static QualityUpdater create(){
-        return new QualityUpdaterSelector(standard, Arrays.asList(old, legendary));
+        return new QualityUpdaterSelector(standard, Arrays.asList(legendary, old));
     }
 }
