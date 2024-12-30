@@ -2,6 +2,7 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
+import static com.gildedrose.core.domain.SpecialNames.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GildedRoseTest {
@@ -37,7 +38,7 @@ class GildedRoseTest {
     @Test
     void agedBrieQualityShouldIncrease(){
         //given
-        Item[] items = new Item[] { new Item("Aged Brie", 10, 5) };
+        Item[] items = new Item[] { new Item(AGED_BRIE.fullName, 10, 5) };
         GildedRose app = new GildedRose(items);
 
         //when
@@ -50,7 +51,7 @@ class GildedRoseTest {
     @Test
     void agedBrieQualityShouldNotExceedMax(){
         //given
-        Item[] items = new Item[] { new Item("Aged Brie", -1, 48) };
+        Item[] items = new Item[] { new Item(AGED_BRIE.fullName, -1, 48) };
         GildedRose app = new GildedRose(items);
 
         //when
@@ -63,7 +64,7 @@ class GildedRoseTest {
     @Test
     void qualityShouldNeverExceedMax(){
         //given
-        Item[] items = new Item[] { new Item("Aged Brie", 10, 50) };
+        Item[] items = new Item[] { new Item(AGED_BRIE.fullName, 10, 50) };
         GildedRose app = new GildedRose(items);
 
         //when
@@ -76,7 +77,7 @@ class GildedRoseTest {
     @Test
     void sulfurasIsLegendary(){
         //given
-        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 10, 50) };
+        Item[] items = new Item[] { new Item(SULFURAS.fullName, 10, 50) };
         GildedRose app = new GildedRose(items);
 
         //when
@@ -90,7 +91,7 @@ class GildedRoseTest {
     @Test
     void backstagePassesQualityShouldIncrease(){
         //given
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 20, 5) };
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES.fullName, 20, 5) };
         GildedRose app = new GildedRose(items);
 
         //when
@@ -104,7 +105,7 @@ class GildedRoseTest {
     @Test
     void backstagePassesQualityShouldIncreaseBy2(){
         //given
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 10, 5) };
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES.fullName, 10, 5) };
         GildedRose app = new GildedRose(items);
 
         //when
@@ -118,7 +119,7 @@ class GildedRoseTest {
     @Test
     void backstagePassesQualityShouldIncreaseBy3(){
         //given
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 5, 5) };
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES.fullName, 5, 5) };
         GildedRose app = new GildedRose(items);
 
         //when
@@ -132,7 +133,7 @@ class GildedRoseTest {
     @Test
     void backstagePassesQualityShouldDropToZero(){
         //given
-        Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 0, 5) };
+        Item[] items = new Item[] { new Item(BACKSTAGE_PASSES.fullName, 0, 5) };
         GildedRose app = new GildedRose(items);
 
         //when
