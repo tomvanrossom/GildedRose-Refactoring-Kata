@@ -6,15 +6,15 @@ class BackstagePassAging implements AgingFunction {
 
     @Override
     public int nextQuality(int newSellIn, int oldQuality) {
-        int rate;
+        int amount;
         if (newSellIn < 5) {
-            rate = 3;
+            amount = 3;
         } else if (newSellIn < 10) {
-            rate = 2;
+            amount = 2;
         } else {
-            rate = 1;
+            amount = 1;
         }
-        int newQuality = oldQuality + rate;
+        int newQuality = oldQuality + amount;
 
         if (newSellIn < 0) {
             newQuality = 0;

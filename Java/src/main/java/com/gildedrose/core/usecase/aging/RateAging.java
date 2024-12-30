@@ -3,10 +3,17 @@ package com.gildedrose.core.usecase.aging;
 class RateAging implements AgingFunction{
 
     private final int rate;
+
+    private final int minQuality;
     private final int maxQuality;
 
     public RateAging(int rate, int maxQuality) {
+        this(rate, 0, maxQuality);
+    }
+
+    public RateAging(int rate, int minQuality, int maxQuality) {
         this.rate = rate;
+        this.minQuality = minQuality;
         this.maxQuality = maxQuality;
     }
 
@@ -23,8 +30,8 @@ class RateAging implements AgingFunction{
         if (newQuality > this.maxQuality) {
             newQuality = this.maxQuality;
         }
-        if(newQuality < 0){
-            newQuality = 0;
+        if(newQuality < this.minQuality){
+            newQuality = this.minQuality;
         }
         return newQuality;
     }
