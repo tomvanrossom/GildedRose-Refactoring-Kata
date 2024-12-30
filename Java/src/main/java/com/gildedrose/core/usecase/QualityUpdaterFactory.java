@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class QualityUpdaterFactory {
 
     private static QualityUpdater standard = new AgingQualityUpdater(new SelectsAll(), AgingFunctions.standard());
-    private static SelectableQualityUpdater old = new OldQualityUpdater();
+    private static SelectableQualityUpdater old = new BackStagePassesQualityUpdater();
     private static SelectableQualityUpdater legendary = new LegendaryQualityUpdater();
     private static SelectableQualityUpdater improving = new AgingQualityUpdater(new SelectableByName(SpecialNames.AGED_BRIE), AgingFunctions.improving());
 

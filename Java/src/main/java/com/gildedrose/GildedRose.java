@@ -1,6 +1,5 @@
 package com.gildedrose;
 
-import com.gildedrose.core.usecase.OldQualityUpdater;
 import com.gildedrose.core.usecase.QualityUpdater;
 import com.gildedrose.core.usecase.QualityUpdaterFactory;
 
