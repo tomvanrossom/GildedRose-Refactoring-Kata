@@ -9,7 +9,7 @@ public class QualityUpdaterSelector implements QualityUpdater {
     private final QualityUpdater standard;
     private final List<SelectableQualityUpdater> selectables;
 
-    public QualityUpdaterSelector(StandardQualityUpdater standardQualityUpdater,  List<SelectableQualityUpdater> selectables) {
+    public QualityUpdaterSelector(QualityUpdater standardQualityUpdater,  List<SelectableQualityUpdater> selectables) {
         this.standard = standardQualityUpdater;
         this.selectables = selectables;
     }
