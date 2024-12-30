@@ -27,15 +27,11 @@ public class OldQualityUpdater implements QualityUpdater {
             }
         } else {
             if (item.quality > 0) {
-                if (!SULFURAS.equals(item.name)) {
-                    item.quality = item.quality - 1;
-                }
+               item.quality = item.quality - 1;
             }
         }
 
-        if (!SULFURAS.equals(item.name)) {
-            item.sellIn = item.sellIn - 1;
-        }
+        item.sellIn = item.sellIn - 1;
 
         if (item.sellIn < 0) {
             if (AGED_BRIE.equals(item.name)) {
@@ -47,9 +43,7 @@ public class OldQualityUpdater implements QualityUpdater {
                     item.quality = 0;
                 } else {
                     if (item.quality > 0) {
-                        if (!SULFURAS.equals(item.name)) {
-                            item.quality = item.quality - 1;
-                        }
+                        item.quality = item.quality - 1;
                     }
                 }
             }
