@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-import static com.gildedrose.core.domain.SpecialNames.*;
+import com.gildedrose.core.usecase.OldQualityUpdater;
 
 class GildedRose {
     Item[] items;
@@ -12,57 +12,8 @@ class GildedRose {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
-            updateQuality(item);
+            OldQualityUpdater.updateQuality(item);
         }
     }
 
-    private void updateQuality(Item item) {
-        if (AGED_BRIE.equals(item.name) || BACKSTAGE_PASSES.equals(item.name)) {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-
-                if (BACKSTAGE_PASSES.equals(item.name)) {
-                    if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-
-                    if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-                }
-            }
-        } else {
-            if (item.quality > 0) {
-                if (!SULFURAS.equals(item.name)) {
-                    item.quality = item.quality - 1;
-                }
-            }
-        }
-
-        if (!SULFURAS.equals(item.name)) {
-            item.sellIn = item.sellIn - 1;
-        }
-
-        if (item.sellIn < 0) {
-            if (AGED_BRIE.equals(item.name)) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            } else {
-                if (BACKSTAGE_PASSES.equals(item.name)) {
-                    item.quality = 0;
-                } else {
-                    if (item.quality > 0) {
-                        if (!SULFURAS.equals(item.name)) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
