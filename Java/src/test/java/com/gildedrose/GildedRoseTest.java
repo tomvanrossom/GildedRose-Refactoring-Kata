@@ -144,4 +144,18 @@ class GildedRoseTest {
         assertEquals(0, app.items[0].quality, "quality should be zero");
     }
 
+    @Test
+    void conjuredQualityShouldDecreaseBy2(){
+        //given
+        Item[] items = new Item[] { new Item(CONJURED.fullName, 5, 5) };
+        GildedRose app = new GildedRose(items);
+
+        //when
+        app.updateQuality();
+
+        //then
+        assertEquals(4, app.items[0].sellIn, "sellIn should decrease");
+        assertEquals(3, app.items[0].quality, "quality should decrease by 2");
+    }
+
 }
