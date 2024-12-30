@@ -23,6 +23,9 @@ class RateAging implements AgingFunction{
         if (newQuality > this.maxQuality) {
             newQuality = this.maxQuality;
         }
+        if(newQuality < 0){
+            newQuality = 0;
+        }
         return newQuality;
     }
 }
