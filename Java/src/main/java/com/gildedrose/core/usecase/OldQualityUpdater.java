@@ -4,8 +4,9 @@ import com.gildedrose.Item;
 
 import static com.gildedrose.core.domain.SpecialNames.*;
 
-public class OldQualityUpdater {
-    public static void updateQuality(Item item) {
+public class OldQualityUpdater implements QualityUpdater {
+    @Override
+    public void updateQuality(Item item) {
         if (AGED_BRIE.equals(item.name) || BACKSTAGE_PASSES.equals(item.name)) {
             if (item.quality < 50) {
                 item.quality = item.quality + 1;
