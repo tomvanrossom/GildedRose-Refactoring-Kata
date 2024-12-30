@@ -10,7 +10,9 @@ public class QualityUpdaterFactory {
     private static QualityUpdater standard = new AgingQualityUpdater(new SelectsAll(), AgingFunctions.standard());
     private static SelectableQualityUpdater old = new OldQualityUpdater();
     private static SelectableQualityUpdater legendary = new LegendaryQualityUpdater();
+    private static SelectableQualityUpdater improving = new AgingQualityUpdater(new SelectableByName(SpecialNames.AGED_BRIE), AgingFunctions.improving());
+
     public static QualityUpdater create(){
-        return new QualityUpdaterSelector(standard, Arrays.asList(legendary, old));
+        return new QualityUpdaterSelector(standard, Arrays.asList(improving, legendary, old));
     }
 }

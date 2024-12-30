@@ -2,12 +2,12 @@ package com.gildedrose.core.usecase;
 
 import com.gildedrose.Item;
 
-import static com.gildedrose.core.domain.SpecialNames.*;
+import static com.gildedrose.core.domain.SpecialNames.BACKSTAGE_PASSES;
 
 public class OldQualityUpdater implements SelectableQualityUpdater {
     @Override
     public void updateQuality(Item item) {
-        if (AGED_BRIE.equals(item.name) || BACKSTAGE_PASSES.equals(item.name)) {
+        if (BACKSTAGE_PASSES.equals(item.name)) {
             if (item.quality < 50) {
                 item.quality = item.quality + 1;
 
@@ -34,11 +34,7 @@ public class OldQualityUpdater implements SelectableQualityUpdater {
         item.sellIn = item.sellIn - 1;
 
         if (item.sellIn < 0) {
-            if (AGED_BRIE.equals(item.name)) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            } else {
+
                 if (BACKSTAGE_PASSES.equals(item.name)) {
                     item.quality = 0;
                 } else {
@@ -46,12 +42,12 @@ public class OldQualityUpdater implements SelectableQualityUpdater {
                         item.quality = item.quality - 1;
                     }
                 }
-            }
+
         }
     }
 
     @Override
     public boolean matches(Item item) {
-        return AGED_BRIE.equals(item.name) || BACKSTAGE_PASSES.equals(item.name);
+        return BACKSTAGE_PASSES.equals(item.name);
     }
 }
