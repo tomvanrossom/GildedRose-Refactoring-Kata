@@ -29,7 +29,14 @@ public class AgingFunctions {
     }
 
     public static AgingFunction backstagePasses(){
-        return new BackstagePassAging(standardQualityRange());
+        StepRange normal = new StepRange(1, Range.from(10).build());
+        StepRange tenDaysBefore = new StepRange(2, Range.from(5).toExclusive(10).build());
+        StepRange fiveDaysBefore = new StepRange(3, Range.from(0).toExclusive(5).build());
+
+        int dropToZero = Integer.MIN_VALUE;
+        StepRange overdue = new StepRange(dropToZero, Range.from(Integer.MIN_VALUE).toExclusive(0).build());
+
+        return new SellInStepsAging(asList(normal, tenDaysBefore, fiveDaysBefore, overdue), standardQualityRange());
     }
 
     public static AgingFunction legendary(){
