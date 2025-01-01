@@ -1,9 +1,9 @@
 package com.gildedrose.core.usecase.selectable;
 
-import com.gildedrose.Item;
+import com.gildedrose.core.domain.Article;
+import com.gildedrose.core.domain.TestArticle;
 import org.junit.jupiter.api.Test;
 
-import static com.gildedrose.ItemWrapper.wrap;
 import static com.gildedrose.core.domain.SpecialNames.CONJURED;
 import static com.gildedrose.core.domain.SpecialNames.SULFURAS;
 import static com.gildedrose.core.usecase.selectable.Config.byName;
@@ -16,10 +16,10 @@ class SelectableByNameTest {
     void matchesConfigured() {
         //given
         Selectable selectable = byName(SULFURAS);
-        Item item = new Item(SULFURAS.fullName, 5, 10);
+        Article article = new TestArticle(SULFURAS.fullName, 5, 10);
 
         //when
-        boolean actual = selectable.matches(wrap(item));
+        boolean actual = selectable.matches(article);
 
         assertTrue(actual);
     }
@@ -28,10 +28,10 @@ class SelectableByNameTest {
     void matchesFalseWithOther() {
         //given
         Selectable selectable = byName(SULFURAS);
-        Item item = new Item(CONJURED.fullName, 5, 10);
+        Article article = new TestArticle(CONJURED.fullName, 5, 10);
 
         //when
-        boolean actual = selectable.matches(wrap(item));
+        boolean actual = selectable.matches(article);
 
         assertFalse(actual);
     }
