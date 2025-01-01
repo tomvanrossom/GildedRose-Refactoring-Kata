@@ -1,10 +1,12 @@
 package com.gildedrose.core.usecase.aging;
 
+import com.gildedrose.core.domain.Range;
+
 class BackstagePassAging implements AgingFunction {
 
-    private final int minQuality = 0;
-    private final int maxQuality = 50;
-    public BackstagePassAging() {
+    private final Range range;
+    public BackstagePassAging(Range range) {
+        this.range = range;
     }
 
     @Override
@@ -20,11 +22,10 @@ class BackstagePassAging implements AgingFunction {
         int newQuality = oldQuality + amount;
 
         if (newSellIn < 0) {
-            newQuality = this.minQuality;
+            newQuality = this.range.getMin();
         }
-        if (newQuality > this.maxQuality) {
-            newQuality = this.maxQuality;
-        }
+        newQuality = range.ensureInRange(newQuality);
+
 
         return newQuality;
     }

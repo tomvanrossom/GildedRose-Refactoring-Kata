@@ -1,15 +1,17 @@
 package com.gildedrose.core.usecase.aging;
 
+import com.gildedrose.core.domain.Range;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class RateAgingTest {
 
-    private int minQuality = 1;
-    private int maxQuality = 50;
+    private Range range =  Range.Builder.from(1).toInclusive(50).build();
+    private int minQuality = range.getMin();
+    private int maxQuality = range.getMax();
     private int rate = -5;
-    private RateAging rateAging = new RateAging(rate, minQuality, maxQuality);
+    private RateAging rateAging = new RateAging(rate, range);
 
     @Test
     void nextQualityShouldNeverBeLessThenMin() {

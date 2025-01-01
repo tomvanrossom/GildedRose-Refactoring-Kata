@@ -1,14 +1,15 @@
 package com.gildedrose.core.usecase.qualityupdater;
 
 import com.gildedrose.Item;
+import com.gildedrose.core.usecase.aging.AgingFunction;
 import com.gildedrose.core.usecase.selectable.Selectable;
 
-import static com.gildedrose.core.domain.SpecialNames.SULFURAS;
-
 class LegendaryQualityUpdater implements SelectableQualityUpdater {
+    private final AgingFunction agingFunction;
     private final Selectable selectable;
 
-    LegendaryQualityUpdater(Selectable selectable) {
+    LegendaryQualityUpdater(AgingFunction agingFunction, Selectable selectable) {
+        this.agingFunction = agingFunction;
         this.selectable = selectable;
     }
 
@@ -16,7 +17,7 @@ class LegendaryQualityUpdater implements SelectableQualityUpdater {
     @Override
     public void updateQuality(Item item) {
 
-        item.quality = 80;
+        item.quality = agingFunction.nextQuality(item.sellIn, item.quality);
     }
 
     @Override
