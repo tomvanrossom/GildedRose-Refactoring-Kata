@@ -1,16 +1,16 @@
 package com.gildedrose.core.usecase.aging;
 
-import com.gildedrose.core.domain.InRange;
 import com.gildedrose.core.domain.Range;
+import com.gildedrose.core.usecase.selectable.Selectable;
 
-class StepRange implements InRange {
+class StepRange implements Selectable<Integer> {
     private final int amount;
 
-    private final Range range;
+    private final Range sellInRange;
 
-    public StepRange(int rate, Range range) {
+    public StepRange(int rate, Range sellInRange) {
         this.amount = rate;
-        this.range = range;
+        this.sellInRange = sellInRange;
     }
 
     public int getAmount() {
@@ -18,7 +18,7 @@ class StepRange implements InRange {
     }
 
     @Override
-    public boolean isInRange(int value) {
-        return range.isInRange(value);
+    public boolean matches(Integer sellIn) {
+        return sellInRange.isInRange(sellIn);
     }
 }

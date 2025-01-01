@@ -29,7 +29,7 @@ class SellInStepsAging implements AgingFunction{
     private StepRange selectStep(int newSellIn){
         return steps
             .stream()
-            .filter(s -> s.isInRange(newSellIn))
+            .filter(s -> s.matches(newSellIn))
             .findFirst()
             .get();
     }
