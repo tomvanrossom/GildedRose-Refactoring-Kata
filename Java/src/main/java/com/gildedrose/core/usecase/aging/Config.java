@@ -2,8 +2,9 @@ package com.gildedrose.core.usecase.aging;
 
 import com.gildedrose.core.domain.Range;
 
+import static com.gildedrose.core.domain.Range.from;
+import static com.gildedrose.core.domain.Range.full;
 import static java.util.Arrays.asList;
-import static com.gildedrose.core.domain.Range.*;
 
 public class Config {
 
@@ -43,8 +44,9 @@ public class Config {
     }
 
     public static AgingFunction legendary(){
-        StepRange normal = new StepRange(0, full());
+        int neverChange = 0;
+        StepRange normal = new StepRange(neverChange, full());
 
-        return new SellInStepsAging(asList(normal, normal), legendaryQualityRange());
+        return new SellInStepsAging(asList(normal), legendaryQualityRange());
     }
 }

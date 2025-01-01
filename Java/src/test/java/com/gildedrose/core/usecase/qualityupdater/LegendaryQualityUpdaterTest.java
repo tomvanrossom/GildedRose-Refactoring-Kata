@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LegendaryQualityUpdaterTest {
 
-    private final SelectableQualityUpdater updater = Config.legendary;
+    private final SelectableQualityUpdater updater = Config.sulfuras();
 
     @Test
     void updateQualityNeverChanges() {

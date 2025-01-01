@@ -10,7 +10,7 @@ class SellInStepsAging implements AgingFunction{
 
     private final Range qualityRange;
 
-    public SellInStepsAging(List<StepRange> steps, Range qualityRange) {
+    SellInStepsAging(List<StepRange> steps, Range qualityRange) {
         this.steps = steps;
         this.qualityRange = qualityRange;
     }

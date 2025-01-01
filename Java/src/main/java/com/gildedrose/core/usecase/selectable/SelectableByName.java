@@ -6,7 +6,7 @@ import com.gildedrose.core.domain.SpecialNames;
 class SelectableByName implements Selectable<Item> {
     private final SpecialNames name;
 
-    public SelectableByName(SpecialNames name) {
+    SelectableByName(SpecialNames name) {
         this.name = name;
     }
 
