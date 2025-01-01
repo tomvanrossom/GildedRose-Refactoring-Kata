@@ -2,7 +2,7 @@ package com.gildedrose.core.usecase.selectable;
 
 import com.gildedrose.Item;
 
-public class SelectsAll implements Selectable {
+public class SelectsAll implements Selectable<Item> {
     @Override
     public boolean matches(Item item) {
         return true;

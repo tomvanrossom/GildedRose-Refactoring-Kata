@@ -2,11 +2,11 @@ package com.gildedrose.core.usecase.aging;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BackstagePassAgingTest {
 
-    private final AgingFunction aging = AgingFunctions.backstagePasses();
+    private final AgingFunction aging = Config.backstagePasses();
 
     @Test
     void nextQualityShouldBeZeroAfterConvert() {

@@ -10,7 +10,7 @@ class SellInStepsAging implements AgingFunction{
 
     private final Range qualityRange;
 
-    public SellInStepsAging(List<StepRange> steps, Range qualityRange) {
+    SellInStepsAging(List<StepRange> steps, Range qualityRange) {
         this.steps = steps;
         this.qualityRange = qualityRange;
     }
@@ -29,7 +29,7 @@ class SellInStepsAging implements AgingFunction{
     private StepRange selectStep(int newSellIn){
         return steps
             .stream()
-            .filter(s -> s.isInRange(newSellIn))
+            .filter(s -> s.matches(newSellIn))
             .findFirst()
             .get();
     }

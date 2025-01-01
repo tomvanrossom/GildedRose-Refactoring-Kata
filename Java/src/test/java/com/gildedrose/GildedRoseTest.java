@@ -3,7 +3,7 @@ package com.gildedrose;
 import org.junit.jupiter.api.Test;
 
 import static com.gildedrose.core.domain.SpecialNames.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
 
@@ -76,7 +76,7 @@ class GildedRoseTest {
     @Test
     void agedBrieQualityShouldNotExceedMax(){
         //given
-        Item[] items = new Item[] { new Item(AGED_BRIE.fullName, -1, 48) };
+        Item[] items = new Item[] { new Item(AGED_BRIE.fullName, -1, 49) };
         GildedRose app = new GildedRose(items);
 
         //when

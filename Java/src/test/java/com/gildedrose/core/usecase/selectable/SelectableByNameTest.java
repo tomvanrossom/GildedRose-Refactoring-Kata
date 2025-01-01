@@ -5,8 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static com.gildedrose.core.domain.SpecialNames.CONJURED;
 import static com.gildedrose.core.domain.SpecialNames.SULFURAS;
-import static com.gildedrose.core.usecase.selectable.Selectables.byName;
-import static org.junit.jupiter.api.Assertions.*;
+import static com.gildedrose.core.usecase.selectable.Config.byName;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SelectableByNameTest {
 
