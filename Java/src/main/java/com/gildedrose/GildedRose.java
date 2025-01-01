@@ -1,6 +1,5 @@
 package com.gildedrose;
 
-import com.gildedrose.core.usecase.qualityupdater.Config;
 import com.gildedrose.core.usecase.qualityupdater.QualityUpdater;
 
 import static com.gildedrose.ItemWrapper.wrap;
