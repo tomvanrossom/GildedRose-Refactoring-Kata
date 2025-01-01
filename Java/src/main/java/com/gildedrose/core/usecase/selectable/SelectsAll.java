@@ -1,10 +1,10 @@
 package com.gildedrose.core.usecase.selectable;
 
-import com.gildedrose.Item;
+import com.gildedrose.core.domain.Article;
 
-public class SelectsAll implements Selectable<Item> {
+public class SelectsAll implements Selectable<Article> {
     @Override
-    public boolean matches(Item item) {
+    public boolean matches(Article article) {
         return true;
     }
 }

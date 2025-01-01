@@ -3,6 +3,7 @@ package com.gildedrose.core.usecase.qualityupdater;
 import com.gildedrose.Item;
 import org.junit.jupiter.api.Test;
 
+import static com.gildedrose.ItemWrapper.wrap;
 import static com.gildedrose.core.domain.SpecialNames.SULFURAS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,7 +18,7 @@ class SulfurasQualityUpdaterTest {
         Item item = new Item(SULFURAS.fullName, 5, 50);
 
         //when
-        updater.updateQuality(item);
+        updater.updateQuality(wrap(item));
 
         //then
         assertEquals(80, item.quality);
@@ -30,7 +31,7 @@ class SulfurasQualityUpdaterTest {
         Item item = new Item(SULFURAS.fullName, 5, 50);
 
         //when
-        boolean actual = updater.matches(item);
+        boolean actual = updater.matches(wrap(item));
 
         //then
         assertTrue(actual);
