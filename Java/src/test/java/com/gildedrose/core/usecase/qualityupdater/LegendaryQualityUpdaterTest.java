@@ -6,11 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import static com.gildedrose.core.domain.SpecialNames.SULFURAS;
 import static com.gildedrose.core.usecase.selectable.Selectables.byName;
+import static com.gildedrose.core.usecase.sellin.Config.fixed;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LegendaryQualityUpdaterTest {
 
-    private final LegendaryQualityUpdater updater = new LegendaryQualityUpdater(AgingFunctions.legendary(), byName(SULFURAS));
+    private final LegendaryQualityUpdater updater = new LegendaryQualityUpdater(AgingFunctions.legendary(), fixed(), byName(SULFURAS));
 
     @Test
     void updateQualityNeverChanges() {
