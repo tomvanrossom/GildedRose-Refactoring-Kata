@@ -5,13 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RateAgingTest {
+class SellInStepsAgingTest {
 
-    private Range range =  Range.Builder.from(1).toInclusive(50).build();
-    private int minQuality = range.getMin();
-    private int maxQuality = range.getMax();
-    private int rate = -5;
-    private RateAging rateAging = new RateAging(rate, range);
+    private AgingFunction agingFunction = AgingFunctions.simpleAging(-5);
 
     @Test
     void nextQualityShouldNeverBeLessThenMin() {
@@ -20,10 +16,10 @@ class RateAgingTest {
         int oldQuality = 2;
 
         //when
-        int actual = rateAging.nextQuality(newSellIn, oldQuality);
+        int actual = agingFunction.nextQuality(newSellIn, oldQuality);
 
         //then
-        assertTrue(actual >= minQuality, "Should not be less then min");
+        assertTrue(actual >= 0, "Should not be less then min");
     }
 
     @Test
@@ -33,10 +29,10 @@ class RateAgingTest {
         int oldQuality = 55;
 
         //when
-        int actual = rateAging.nextQuality(newSellIn, oldQuality);
+        int actual = agingFunction.nextQuality(newSellIn, oldQuality);
 
         //then
-        assertTrue(actual >= minQuality, "Should not be more then max");
+        assertTrue(actual >= 0, "Should not be more then max");
     }
 
     @Test
@@ -46,7 +42,7 @@ class RateAgingTest {
         int oldQuality = 50;
 
         //when
-        int actual = rateAging.nextQuality(newSellIn, oldQuality);
+        int actual = agingFunction.nextQuality(newSellIn, oldQuality);
 
         //then
         assertEquals(actual, 45, "Should be decreased by rate");
@@ -59,7 +55,7 @@ class RateAgingTest {
         int oldQuality = 50;
 
         //when
-        int actual = rateAging.nextQuality(newSellIn, oldQuality);
+        int actual = agingFunction.nextQuality(newSellIn, oldQuality);
 
         //then
         assertEquals(actual, 40, "Should be decreased by double rate");
