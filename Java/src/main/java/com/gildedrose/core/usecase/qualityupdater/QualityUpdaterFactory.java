@@ -15,7 +15,7 @@ public class QualityUpdaterFactory {
 
     private static QualityUpdater standard = new AgingQualityUpdater(all(), simple(), singleDegrading());
     private static SelectableQualityUpdater backStagePassesQualityUpdater = new AgingQualityUpdater(byName(BACKSTAGE_PASSES), simple(), backstagePasses());
-    private static SelectableQualityUpdater legendary = new LegendaryQualityUpdater(AgingFunctions.legendary(),fixed(), byName(SULFURAS));
+    static SelectableQualityUpdater legendary = new AgingQualityUpdater(byName(SULFURAS), fixed(), AgingFunctions.legendary());
     private static SelectableQualityUpdater improving = new AgingQualityUpdater(byName(AGED_BRIE), simple(), AgingFunctions.improving());
 
     private static SelectableQualityUpdater doubleDegrading = new AgingQualityUpdater(byName(CONJURED), simple(), AgingFunctions.doubleDegrading());
