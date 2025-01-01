@@ -1,12 +1,12 @@
 package com.gildedrose;
 
+import com.gildedrose.core.usecase.qualityupdater.Config;
 import com.gildedrose.core.usecase.qualityupdater.QualityUpdater;
-import com.gildedrose.core.usecase.qualityupdater.QualityUpdaterFactory;
 
 class GildedRose {
     Item[] items;
 
-    QualityUpdater updater = QualityUpdaterFactory.create();
+    QualityUpdater updater = Config.qualityUpdater();
 
     public GildedRose(Item[] items) {
         this.items = items;

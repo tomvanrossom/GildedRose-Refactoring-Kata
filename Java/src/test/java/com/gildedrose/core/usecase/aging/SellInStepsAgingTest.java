@@ -1,13 +1,13 @@
 package com.gildedrose.core.usecase.aging;
 
-import com.gildedrose.core.domain.Range;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SellInStepsAgingTest {
 
-    private AgingFunction agingFunction = AgingFunctions.simpleAging(-5);
+    private AgingFunction agingFunction = Config.simpleAging(-5);
 
     @Test
     void nextQualityShouldNeverBeLessThenMin() {

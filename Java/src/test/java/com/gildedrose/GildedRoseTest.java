@@ -3,7 +3,7 @@ package com.gildedrose;
 import org.junit.jupiter.api.Test;
 
 import static com.gildedrose.core.domain.SpecialNames.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
 

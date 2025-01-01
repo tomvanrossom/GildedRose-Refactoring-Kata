@@ -4,7 +4,7 @@ import com.gildedrose.core.domain.Range;
 
 import static java.util.Arrays.asList;
 
-public class AgingFunctions {
+public class Config {
 
     public static Range standardQualityRange() { return Range.from(0).toInclusive(50).build();};
     public static Range legendaryQualityRange() { return Range.from(80).toInclusive(80).build();};

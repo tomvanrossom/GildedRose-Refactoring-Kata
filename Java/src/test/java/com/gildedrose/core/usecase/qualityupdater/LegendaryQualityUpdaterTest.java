@@ -4,11 +4,12 @@ import com.gildedrose.Item;
 import org.junit.jupiter.api.Test;
 
 import static com.gildedrose.core.domain.SpecialNames.SULFURAS;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class LegendaryQualityUpdaterTest {
 
-    private final SelectableQualityUpdater updater = QualityUpdaterFactory.legendary;
+    private final SelectableQualityUpdater updater = Config.legendary;
 
     @Test
     void updateQualityNeverChanges() {
