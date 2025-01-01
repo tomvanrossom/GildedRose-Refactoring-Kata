@@ -2,6 +2,8 @@ package com.gildedrose.core.usecase.aging;
 
 import com.gildedrose.core.domain.Range;
 
+import java.util.List;
+
 import static com.gildedrose.core.domain.Range.from;
 import static com.gildedrose.core.domain.Range.full;
 import static java.util.Arrays.asList;
@@ -11,11 +13,19 @@ public class Config {
     public static Range standardQualityRange() { return from(0).toInclusive(50).build();};
     public static Range legendaryQualityRange() { return from(80).toInclusive(80).build();};
 
-    static AgingFunction simpleAging(int amount){
+    static SellInStepsAging simpleAging(int amount){
         StepRange normal = new StepRange(amount, from(0).build());
         StepRange overdue = new StepRange(2 * amount, from(Integer.MIN_VALUE).toExclusive(0).build());
 
-        return new SellInStepsAging(asList(normal, overdue), standardQualityRange());
+        return steppedAging(asList(normal, overdue));
+    }
+
+    static SellInStepsAging steppedAging(List<StepRange> steps){
+        return steppedAging(steps, standardQualityRange());
+    }
+
+    static SellInStepsAging steppedAging(List<StepRange> steps, Range qualityRange){
+        return new SellInStepsAging(steps, qualityRange);
     }
 
     public static AgingFunction singleDegrading(){
@@ -40,13 +50,13 @@ public class Config {
         int dropToZero = Integer.MIN_VALUE;
         StepRange overdue = new StepRange(dropToZero, from(Integer.MIN_VALUE).toExclusive(0).build());
 
-        return new SellInStepsAging(asList(normal, tenDaysBefore, fiveDaysBefore, overdue), standardQualityRange());
+        return steppedAging(asList(normal, tenDaysBefore, fiveDaysBefore, overdue));
     }
 
     public static AgingFunction legendary(){
         int neverChange = 0;
         StepRange normal = new StepRange(neverChange, full());
 
-        return new SellInStepsAging(asList(normal), legendaryQualityRange());
+        return steppedAging(asList(normal), legendaryQualityRange());
     }
 }

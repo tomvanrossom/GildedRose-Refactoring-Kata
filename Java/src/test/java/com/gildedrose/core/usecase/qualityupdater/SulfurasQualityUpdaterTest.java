@@ -7,7 +7,7 @@ import static com.gildedrose.core.domain.SpecialNames.SULFURAS;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class LegendaryQualityUpdaterTest {
+class SulfurasQualityUpdaterTest {
 
     private final SelectableQualityUpdater updater = Config.sulfuras();
 

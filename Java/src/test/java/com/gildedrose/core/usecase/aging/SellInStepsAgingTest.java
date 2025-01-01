@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SellInStepsAgingTest {
 
-    private AgingFunction agingFunction = Config.simpleAging(-5);
+    private SellInStepsAging agingFunction = Config.simpleAging(-5);
 
     @Test
     void nextQualityShouldNeverBeLessThenMin() {
