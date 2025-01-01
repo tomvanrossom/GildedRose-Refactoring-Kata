@@ -11,12 +11,12 @@ import static java.util.Arrays.asList;
 
 public class Config {
 
-    private static QualityUpdater standard = new AgingQualityUpdater(all(), simple(), singleDegrading());
-    private static SelectableQualityUpdater backStagePassesQualityUpdater = new AgingQualityUpdater(byName(BACKSTAGE_PASSES), simple(), backstagePasses());
-    static SelectableQualityUpdater legendary = new AgingQualityUpdater(byName(SULFURAS), fixed(), com.gildedrose.core.usecase.aging.Config.legendary());
-    private static SelectableQualityUpdater improving = new AgingQualityUpdater(byName(AGED_BRIE), simple(), com.gildedrose.core.usecase.aging.Config.improving());
+    private static QualityUpdater standard = new GenericQualityUpdater(all(), simple(), singleDegrading());
+    private static SelectableQualityUpdater backStagePassesQualityUpdater = new GenericQualityUpdater(byName(BACKSTAGE_PASSES), simple(), backstagePasses());
+    static SelectableQualityUpdater legendary = new GenericQualityUpdater(byName(SULFURAS), fixed(), com.gildedrose.core.usecase.aging.Config.legendary());
+    private static SelectableQualityUpdater improving = new GenericQualityUpdater(byName(AGED_BRIE), simple(), com.gildedrose.core.usecase.aging.Config.improving());
 
-    private static SelectableQualityUpdater doubleDegrading = new AgingQualityUpdater(byName(CONJURED), simple(), com.gildedrose.core.usecase.aging.Config.doubleDegrading());
+    private static SelectableQualityUpdater doubleDegrading = new GenericQualityUpdater(byName(CONJURED), simple(), com.gildedrose.core.usecase.aging.Config.doubleDegrading());
 
     public static QualityUpdater qualityUpdater(){
         return new QualityUpdaterSelector(standard, asList(improving, legendary, backStagePassesQualityUpdater, doubleDegrading));

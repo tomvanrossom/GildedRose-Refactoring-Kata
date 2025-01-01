@@ -5,13 +5,13 @@ import com.gildedrose.core.usecase.aging.AgingFunction;
 import com.gildedrose.core.usecase.selectable.Selectable;
 import com.gildedrose.core.usecase.sellin.SellInFunction;
 
-class AgingQualityUpdater implements SelectableQualityUpdater {
+class GenericQualityUpdater implements SelectableQualityUpdater {
 
     private final Selectable selectable;
     private final SellInFunction sellInFunction;
     private final AgingFunction agingFunction;
 
-    public AgingQualityUpdater(Selectable selectable, SellInFunction sellInFunction, AgingFunction agingFunction) {
+    GenericQualityUpdater(Selectable selectable, SellInFunction sellInFunction, AgingFunction agingFunction) {
         this.selectable = selectable;
         this.sellInFunction = sellInFunction;
         this.agingFunction = agingFunction;

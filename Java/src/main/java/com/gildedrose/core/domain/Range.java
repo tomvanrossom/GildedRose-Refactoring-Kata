@@ -13,6 +13,10 @@ public class Range {
         return Range.Builder.from(min);
     }
 
+    public static Range full(){
+        return Range.from(Integer.MIN_VALUE).build();
+    }
+
     public boolean isInRange(int value){
         return value >= min && value < max;
     }
