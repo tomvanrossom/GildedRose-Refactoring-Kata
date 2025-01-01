@@ -3,7 +3,7 @@ package com.gildedrose.core.usecase.aging;
 import com.gildedrose.core.domain.InRange;
 import com.gildedrose.core.domain.Range;
 
-public class StepRange implements InRange {
+class StepRange implements InRange {
     private final int amount;
 
     private final Range range;

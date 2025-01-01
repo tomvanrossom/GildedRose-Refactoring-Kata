@@ -9,7 +9,7 @@ public class AgingFunctions {
     public static Range standardQualityRange() { return Range.from(0).toInclusive(50).build();};
     public static Range legendaryQualityRange() { return Range.from(80).toInclusive(80).build();};
 
-    private static AgingFunction simpleAging(int amount){
+    static AgingFunction simpleAging(int amount){
         StepRange normal = new StepRange(amount, Range.from(0).build());
         StepRange overdue = new StepRange(2 * amount, Range.from(Integer.MIN_VALUE).toExclusive(0).build());
 

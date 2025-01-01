@@ -17,17 +17,20 @@ class SellInStepsAging implements AgingFunction{
 
     @Override
     public int nextQuality(int newSellIn, int oldQuality) {
-        int amount = steps
-            .stream()
-            .filter(step -> step.isInRange(newSellIn))
-            .findFirst()
-            .map(step -> step.getAmount())
-            .get();
+        int amount = selectStep(newSellIn).getAmount();
 
         int newQuality = oldQuality + amount;
 
         newQuality = qualityRange.ensureInRange(newQuality);
 
         return newQuality;
+    }
+
+    private StepRange selectStep(int newSellIn){
+        return steps
+            .stream()
+            .filter(s -> s.isInRange(newSellIn))
+            .findFirst()
+            .get();
     }
 }
