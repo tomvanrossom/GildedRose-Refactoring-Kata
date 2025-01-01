@@ -1,7 +1,7 @@
 package com.gildedrose.core.usecase.qualityupdater;
 
-import com.gildedrose.Item;
+import com.gildedrose.core.domain.Article;
 
 public interface QualityUpdater {
-    void updateQuality(Item item);
+    void updateQuality(Article article);
 }

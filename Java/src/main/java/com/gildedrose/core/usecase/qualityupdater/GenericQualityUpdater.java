@@ -1,6 +1,6 @@
 package com.gildedrose.core.usecase.qualityupdater;
 
-import com.gildedrose.Item;
+import com.gildedrose.core.domain.Article;
 import com.gildedrose.core.usecase.aging.AgingFunction;
 import com.gildedrose.core.usecase.selectable.Selectable;
 import com.gildedrose.core.usecase.sellin.SellInFunction;
@@ -18,13 +18,13 @@ class GenericQualityUpdater implements SelectableQualityUpdater {
     }
 
     @Override
-    public void updateQuality(Item item) {
-        item.sellIn = sellInFunction.nextSellIn(item.sellIn);
-        item.quality = agingFunction.nextQuality(item.sellIn, item.quality);
+    public void updateQuality(Article article) {
+        article.setSellIn(sellInFunction.nextSellIn(article.getSellIn()));
+        article.setQuality(agingFunction.nextQuality(article.getSellIn(), article.getQuality()));
     }
 
     @Override
-    public boolean matches(Item item) {
-        return selectable.matches(item);
+    public boolean matches(Article article) {
+        return selectable.matches(article);
     }
 }

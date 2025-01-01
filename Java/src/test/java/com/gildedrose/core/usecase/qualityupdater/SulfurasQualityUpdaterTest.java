@@ -1,6 +1,7 @@
 package com.gildedrose.core.usecase.qualityupdater;
 
-import com.gildedrose.Item;
+import com.gildedrose.core.domain.Article;
+import com.gildedrose.core.domain.TestArticle;
 import org.junit.jupiter.api.Test;
 
 import static com.gildedrose.core.domain.SpecialNames.SULFURAS;
@@ -14,23 +15,23 @@ class SulfurasQualityUpdaterTest {
     @Test
     void updateQualityNeverChanges() {
         //given
-        Item item = new Item(SULFURAS.fullName, 5, 50);
+        Article article = new TestArticle(SULFURAS.fullName, 5, 50);
 
         //when
-        updater.updateQuality(item);
+        updater.updateQuality(article);
 
         //then
-        assertEquals(80, item.quality);
-        assertEquals(5, item.sellIn);
+        assertEquals(80, article.getQuality());
+        assertEquals(5, article.getSellIn());
     }
 
     @Test
     void matchesSulfuras(){
         //given
-        Item item = new Item(SULFURAS.fullName, 5, 50);
+        Article article = new TestArticle(SULFURAS.fullName, 5, 50);
 
         //when
-        boolean actual = updater.matches(item);
+        boolean actual = updater.matches(article);
 
         //then
         assertTrue(actual);

@@ -1,9 +1,9 @@
 package com.gildedrose.core.usecase.selectable;
 
-import com.gildedrose.Item;
+import com.gildedrose.core.domain.Article;
 import com.gildedrose.core.domain.SpecialNames;
 
-class SelectableByName implements Selectable<Item> {
+class SelectableByName implements Selectable<Article> {
     private final SpecialNames name;
 
     SelectableByName(SpecialNames name) {
@@ -11,7 +11,7 @@ class SelectableByName implements Selectable<Item> {
     }
 
     @Override
-    public boolean matches(Item item) {
-        return name.equals(item.name);
+    public boolean matches(Article article) {
+        return name.equals(article.getName());
     }
 }
