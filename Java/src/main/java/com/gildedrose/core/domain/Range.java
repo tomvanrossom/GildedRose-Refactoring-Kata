@@ -1,6 +1,6 @@
 package com.gildedrose.core.domain;
 
-public class Range {
+public class Range implements InRange {
     private final int min;
     private final int max;
 
@@ -13,6 +13,7 @@ public class Range {
         return Range.Builder.from(min);
     }
 
+    @Override
     public boolean isInRange(int value){
         return value >= min && value < max;
     }
@@ -42,7 +43,7 @@ public class Range {
 
     public static final class Builder {
         private final int min;
-        private int max;
+        private int max = Integer.MAX_VALUE;
 
         private Builder(int min) {
             this.min = min;
