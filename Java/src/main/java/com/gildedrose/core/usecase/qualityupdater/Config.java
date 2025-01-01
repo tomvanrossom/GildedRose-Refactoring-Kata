@@ -29,11 +29,11 @@ public class Config {
         return new GenericQualityUpdater(byName(CONJURED), simple(), doubleDegrading());
     }
 
-    static List<SelectableQualityUpdater> specificQus(){
+    static List<SelectableQualityUpdater> specificQUs(){
         return asList(agedBrieQU(), sulfuras(), backStagePassesQU(), conjuredQU());
     }
 
     public static QualityUpdater qualityUpdater(){
-        return new QualityUpdaterSelector(standardQU(), specificQus());
+        return new QualityUpdaterSelector(standardQU(), specificQUs());
     }
 }

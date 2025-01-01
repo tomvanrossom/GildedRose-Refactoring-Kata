@@ -36,14 +36,6 @@ public class Range {
         return fixValue;
     }
 
-    public int getMin() {
-        return this.min;
-    }
-
-    public int getMax() {
-        return 0;
-    }
-
     public static final class Builder {
         private final int min;
         private int max = Integer.MAX_VALUE;
