@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BackstagePassAgingTest {
 
-    private final BackstagePassAging aging = new BackstagePassAging();
+    private final AgingFunction aging = AgingFunctions.backstagePasses();
 
     @Test
     void nextQualityShouldBeZeroAfterConvert() {
